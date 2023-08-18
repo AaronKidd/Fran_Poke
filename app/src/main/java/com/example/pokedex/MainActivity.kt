@@ -3,11 +3,14 @@ package com.example.pokedex
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pokedex.ui.theme.PokedexTheme
@@ -19,7 +22,7 @@ class MainActivity : ComponentActivity() {
             PokedexTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    PokemonList()
                 }
             }
         }
@@ -27,14 +30,15 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun PokemonList() {
+    val pokemonList = MockData().getPokemonList()
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     PokedexTheme {
-        Greeting("Android")
+        PokemonList()
     }
 }
